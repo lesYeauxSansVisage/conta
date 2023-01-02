@@ -1,6 +1,7 @@
 import { Cargo } from "./Cargo";
+import { IUsuario } from "../interfaces/IUsuario";
 
-class Funcionario {
+class Funcionario implements IUsuario {
   private _salario: number;
 
   constructor(salario: number) {
@@ -12,5 +13,9 @@ class Funcionario {
   }
   public set salario(value: number) {
     this._salario = value;
+  }
+
+  autenticar(): boolean {
+    return true;
   }
 }
