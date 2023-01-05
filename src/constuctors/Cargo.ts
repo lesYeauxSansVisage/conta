@@ -25,7 +25,3 @@ export class Cargo {
     this._funcionarios.push(funcionario);
   }
 }
-
-const novoCargo = new Cargo("faxineiro");
-
-console.log(novoCargo);
