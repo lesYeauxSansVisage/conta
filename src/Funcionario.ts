@@ -37,15 +37,3 @@ export class Funcionario extends Pessoa implements IUsuario {
     this._cargos.push(novoCargo);
   }
 }
-
-const novoFuncionario = new Funcionario(
-  "111111111111111",
-  "John",
-  "8588888888",
-  1200,
-  "jardineiro"
-);
-
-// console.log(novoFuncionario);
-
-console.log(novoFuncionario.cargos[0].funcionarios[0]);
