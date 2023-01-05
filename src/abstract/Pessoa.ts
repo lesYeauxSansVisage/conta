@@ -6,13 +6,21 @@ export abstract class Pessoa {
   private _telefone: string;
 
   constructor(cpf: string, nome: string, telefone: string) {
-    if (cpf.length !== 11 || telefone.length < 9) {
-      throw new Error("Dados inválidos");
+    if (cpf.length !== 11) {
+      throw new Error("CPF Inválido.");
+    }
+
+    if (telefone.length < 8) {
+      throw new Error("Telefone inválido");
+    }
+
+    if (!nome) {
+      throw new Error("Insira seu nome, por favor.");
     }
 
     this._cpf = cpf;
-    this._nome = cpf;
-    this._telefone = cpf;
+    this._nome = nome;
+    this._telefone = telefone;
   }
 
   public get cpf(): string {
