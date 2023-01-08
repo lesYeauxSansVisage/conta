@@ -1,6 +1,6 @@
 import { Cliente } from "../Cliente";
 import { Credito } from "../constuctors/Crédito";
-import { Data } from "../constuctors/Data";
+
 import { Debito } from "../constuctors/Débito";
 
 export abstract class Conta {

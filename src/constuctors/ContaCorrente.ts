@@ -1,6 +1,5 @@
 import { Conta } from "../abstract/Conta";
 import { Cliente } from "../Cliente";
-import { Data } from "./Data";
 
 export class ContaCorrente extends Conta {
   private _limite: number = 0;

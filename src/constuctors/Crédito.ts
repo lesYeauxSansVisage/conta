@@ -1,5 +1,3 @@
-import { Data } from "./Data";
-
 export class Credito {
   private _valor: number;
 
