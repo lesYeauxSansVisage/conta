@@ -13,8 +13,6 @@ const cliente1 = new Cliente(
   "SP"
 );
 
-cliente1.correntes[0].depositar(1000, 2023, 1, 5);
-
 const cliente2 = new Cliente(
   "12345678901",
   "William",
@@ -28,14 +26,24 @@ const cliente2 = new Cliente(
   "SP"
 );
 
+cliente1.correntes[0].depositar(1000, 2023, 1, 5);
+
 cliente2.poupancas[0].depositar(1000, 2023, 5, 1);
+
+console.log(
+  `O saldo de ${cliente1.nome} é ${cliente1.correntes[0].calcularSaldo()}.`
+);
+
+console.log(
+  `O saldo de ${cliente2.nome} é ${cliente2.poupancas[0].calcularSaldo()}.`
+);
 
 cliente1.correntes[0].transferir(cliente2.poupancas[0], 500, 2023, 1, 5);
 
 console.log(
-  "O saldo do cliente 1 é: " + cliente1.correntes[0].calcularSaldo() + "R$"
+  `O saldo de ${cliente1.nome} é ${cliente1.correntes[0].calcularSaldo()}.`
 );
 
 console.log(
-  "O saldo do cliente 2 é: " + cliente2.poupancas[0].calcularSaldo() + "R$"
+  `O saldo de ${cliente2.nome} é ${cliente2.poupancas[0].calcularSaldo()}.`
 );
