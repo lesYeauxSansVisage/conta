@@ -41,7 +41,7 @@ cliente.poupancas[0].depositar(200, 2022, 11, 31);
 
 cliente.poupancas[0].sacar(100, 2022, 2, 5);
 
-cliente.poupancas[0].sacar(100, 2022, 6, 8);
+cliente.poupancas[0].sacar(200, 2022, 6, 8);
 
 console.log(
   `Seu rendimento total foi de: ${cliente.poupancas[0].calcularRendimento()}`
