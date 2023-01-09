@@ -29,6 +29,7 @@ export abstract class Conta {
     const data = new Date(ano, mês, dia);
 
     const novoCredito = new Credito(valor, data);
+
     this._creditos.push(novoCredito);
   }
 
@@ -56,5 +57,9 @@ export abstract class Conta {
 
   public get creditos(): Credito[] {
     return this._creditos;
+  }
+
+  public get cliente(): Cliente {
+    return this._cliente;
   }
 }
