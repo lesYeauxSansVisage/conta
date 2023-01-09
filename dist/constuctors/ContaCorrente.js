@@ -8,6 +8,7 @@ class ContaCorrente extends Conta_1.Conta {
         this._limite = 0;
     }
     transferir(contaDestino, valor, dia, mês, ano) {
+        console.log(`${this.cliente.nome} transferiu ${valor} para ${contaDestino.cliente.nome}`);
         this.sacar(valor, dia, mês, ano);
         contaDestino.depositar(valor, ano, mês, dia);
     }

@@ -15,6 +15,10 @@ export class ContaCorrente extends Conta {
     mês: number,
     ano: number
   ) {
+    console.log(
+      `${this.cliente.nome} transferiu ${valor} para ${contaDestino.cliente.nome}`
+    );
+
     this.sacar(valor, dia, mês, ano);
     contaDestino.depositar(valor, ano, mês, dia);
   }
