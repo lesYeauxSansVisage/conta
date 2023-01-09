@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const Cliente_1 = require("../Cliente");
+const cliente1 = new Cliente_1.Cliente("12345678901", "João", "988887744", "corrente", "4044444", "Ladeira", "15", "Próximo a igreja", "São Paulo", "SP");
+cliente1.correntes[0].depositar(1000, 2023, 1, 5);
+const cliente2 = new Cliente_1.Cliente("12345678901", "William", "988887744", "poupança", "4044444", "Vila", "15", "Próximo a escola", "São Paulo", "SP");
+cliente2.poupancas[0].depositar(1000, 2023, 5, 1);
+cliente1.correntes[0].transferir(cliente2.poupancas[0], 500, 2023, 1, 5);
+console.log("O saldo do cliente 1 é: " + cliente1.correntes[0].calcularSaldo() + "R$");
+console.log("O saldo do cliente 2 é: " + cliente2.poupancas[0].calcularSaldo() + "R$");
