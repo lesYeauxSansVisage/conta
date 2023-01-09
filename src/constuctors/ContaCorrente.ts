@@ -15,7 +15,6 @@ export class ContaCorrente extends Conta {
     mês: number,
     ano: number
   ) {
-    const data = new Date(ano, mês, dia);
     this.sacar(valor, dia, mês, ano);
     contaDestino.depositar(valor, ano, mês, dia);
   }
