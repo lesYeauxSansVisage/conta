@@ -61,7 +61,8 @@ class ContaPoupanca extends Conta_1.Conta {
                 .reduce((acc, curr) => curr.valor + acc, 0);
             const totalMensal = totalCreditosMensais - totalDebitosMensais + this.rendimentos;
             rendimentosMensais = Number((totalMensal * (this.rentabilidadeMensal / 100)).toFixed(2));
-            console.log(`Seu rendimento mensal no mês de ${nomeDosMeses[mêsAtual]} foi de ${rendimentosMensais}R$`);
+            console.log(`Seu total mensal no mês de ${nomeDosMeses[mêsAtual]} foi de ${totalMensal}.`);
+            console.log(`Seu rendimento no mês de ${nomeDosMeses[mêsAtual]} foi de ${rendimentosMensais}R$`);
             this.rendimentos += rendimentosMensais;
         }
         return Number(this.rendimentos.toFixed(2));

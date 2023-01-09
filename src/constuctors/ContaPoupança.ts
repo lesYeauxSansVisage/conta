@@ -103,7 +103,11 @@ export class ContaPoupanca extends Conta {
       );
 
       console.log(
-        `Seu rendimento mensal no mês de ${nomeDosMeses[mêsAtual]} foi de ${rendimentosMensais}R$`
+        `Seu total mensal no mês de ${nomeDosMeses[mêsAtual]} foi de ${totalMensal}.`
+      );
+
+      console.log(
+        `Seu rendimento no mês de ${nomeDosMeses[mêsAtual]} foi de ${rendimentosMensais}R$`
       );
 
       this.rendimentos += rendimentosMensais;
