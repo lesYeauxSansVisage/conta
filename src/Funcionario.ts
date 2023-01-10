@@ -20,7 +20,7 @@ export class Funcionario extends Pessoa implements IUsuario {
     name: string,
     telefone: string,
     salario: number,
-    cargo: string
+    cargo: Cargo
   ) {
     super(cpf, name, telefone);
     this._salario = salario;
@@ -31,9 +31,8 @@ export class Funcionario extends Pessoa implements IUsuario {
     return true;
   }
 
-  public adicionarCargo(cargo: string) {
-    const novoCargo = new Cargo(cargo);
-    novoCargo.adicionarFuncionario(this);
-    this._cargos.push(novoCargo);
+  public adicionarCargo(cargo: Cargo) {
+    cargo.adicionarFuncionario(this);
+    this._cargos.push(cargo);
   }
 }
