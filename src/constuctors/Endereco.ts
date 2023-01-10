@@ -21,8 +21,7 @@ export class Endereco {
     numero: string,
     complemento: string,
     cidade: string,
-    uf: string,
-    cliente: Cliente
+    uf: string
   ) {
     this._cep = cep;
     this._logradouro = logradouro;
@@ -30,7 +29,6 @@ export class Endereco {
     this._complemento = complemento;
     this._cidade = cidade;
     this._uf = uf;
-    this._cliente = cliente;
   }
 
   public get cep(): string {
