@@ -14,8 +14,8 @@ export class ContaPoupanca extends Conta {
     this._rendimentos = value;
   }
 
-  constructor(numero: string, cliente: Cliente) {
-    super(numero, cliente);
+  constructor(numero: string) {
+    super(numero);
   }
 
   public calcularSaldo(): number {
@@ -100,14 +100,6 @@ export class ContaPoupanca extends Conta {
 
       rendimentosMensais = Number(
         (totalMensal * (this.rentabilidadeMensal / 100)).toFixed(2)
-      );
-
-      console.log(
-        `Seu total mensal no mês de ${nomeDosMeses[mêsAtual]} foi de ${totalMensal}.`
-      );
-
-      console.log(
-        `Seu rendimento no mês de ${nomeDosMeses[mêsAtual]} foi de ${rendimentosMensais}R$`
       );
 
       this.rendimentos += rendimentosMensais;

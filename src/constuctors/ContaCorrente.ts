@@ -4,8 +4,8 @@ import { Cliente } from "../Cliente";
 export class ContaCorrente extends Conta {
   private _limite: number = 0;
 
-  constructor(numero: string, cliente: Cliente) {
-    super(numero, cliente);
+  constructor(numero: string) {
+    super(numero);
   }
 
   public transferir(
