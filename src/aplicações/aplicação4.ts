@@ -1,34 +1,45 @@
 import { Cliente } from "../Cliente";
+import { ContaCorrente } from "../constuctors/ContaCorrente";
+import { ContaPoupanca } from "../constuctors/ContaPoupança";
+import { Endereco } from "../constuctors/Endereco";
+
+const endereco1 = new Endereco(
+  "6198400",
+  "Vila",
+  "15",
+  "Próximo da igreja",
+  "Salvador",
+  "BA"
+);
+
+const endereco2 = new Endereco(
+  "6198555",
+  "Ladeira",
+  "10",
+  "Próximo da praça",
+  "São Paulo",
+  "SP"
+);
 
 const cliente1 = new Cliente(
   "12345678901",
   "João",
   "988887744",
-  "corrente",
-  "4044444",
-  "Ladeira",
-  "15",
-  "Próximo a igreja",
-  "São Paulo",
-  "SP"
+  new ContaCorrente(),
+  endereco1
 );
 
 const cliente2 = new Cliente(
   "12345678901",
   "William",
   "988887744",
-  "poupança",
-  "4044444",
-  "Vila",
-  "15",
-  "Próximo a escola",
-  "São Paulo",
-  "SP"
+  new ContaPoupanca(),
+  endereco2
 );
 
-cliente1.correntes[0].depositar(1000, 2023, 1, 5);
+cliente1.correntes[0].depositar(1000);
 
-cliente2.poupancas[0].depositar(1000, 2023, 5, 1);
+cliente2.poupancas[0].depositar(1000);
 
 console.log(
   `O saldo de ${cliente1.nome} é ${cliente1.correntes[0].calcularSaldo()}.`
@@ -38,7 +49,7 @@ console.log(
   `O saldo de ${cliente2.nome} é ${cliente2.poupancas[0].calcularSaldo()}.`
 );
 
-cliente1.correntes[0].transferir(cliente2.poupancas[0], 500, 2023, 1, 5);
+cliente1.correntes[0].transferir(cliente2.poupancas[0], 500);
 
 console.log(
   `O saldo de ${cliente1.nome} é ${cliente1.correntes[0].calcularSaldo()}.`

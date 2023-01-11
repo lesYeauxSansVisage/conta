@@ -1,7 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Cliente_1 = require("../Cliente");
-const cliente = new Cliente_1.Cliente("55555555511", "João", "988888888", "corrente", "61984000", "Rua", "1", "Próxima ao colégio", "São Paulo", "SP");
-cliente.adiconarEndereco("61983000", "Ladeira", "13", "Próximo a praça", "Salvador", "BA");
-cliente.adiconarEndereco("67555000", "Vila", "13", "Próximo a igreja", "Porto Alegre", "RS");
-cliente.listarEnderecos();
+const ContaCorrente_1 = require("../constuctors/ContaCorrente");
+const ContaPoupan_a_1 = require("../constuctors/ContaPoupan\u00E7a");
+const Endereco_1 = require("../constuctors/Endereco");
+const endereco1 = new Endereco_1.Endereco("6198400", "Vila", "15", "Próximo da igreja", "Salvador", "BA");
+const endereco2 = new Endereco_1.Endereco("6198555", "Ladeira", "10", "Próximo da praça", "São Paulo", "SP");
+const endereco3 = new Endereco_1.Endereco("87645000", "Estrada", "1", "Próximo da escola", "Fortaleza", "CE");
+const cliente = new Cliente_1.Cliente("55555555511", "João", "988888888", new ContaPoupan_a_1.ContaPoupanca(), endereco1);
+cliente.adicionarConta(new ContaCorrente_1.ContaCorrente());
+cliente.adicionarConta(new ContaCorrente_1.ContaCorrente());
+cliente.adicionarConta(new ContaCorrente_1.ContaCorrente());
+console.log(cliente);
