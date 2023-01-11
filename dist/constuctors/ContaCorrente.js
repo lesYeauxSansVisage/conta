@@ -3,14 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContaCorrente = void 0;
 const Conta_1 = require("../abstract/Conta");
 class ContaCorrente extends Conta_1.Conta {
-    constructor(numero, cliente) {
-        super(numero, cliente);
+    constructor() {
+        super(...arguments);
         this._limite = 0;
     }
-    transferir(contaDestino, valor, dia, mês, ano) {
-        console.log(`${this.cliente.nome} transferiu ${valor} para ${contaDestino.cliente.nome}`);
-        this.sacar(valor, dia, mês, ano);
-        contaDestino.depositar(valor, ano, mês, dia);
+    transferir(contaDestino, valor, data = new Date()) {
+        this.sacar(valor, data);
+        contaDestino.depositar(valor, data);
     }
     calcularSaldo() {
         const totalCreditos = this.creditos.length > 0
