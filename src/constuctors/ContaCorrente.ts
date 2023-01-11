@@ -4,23 +4,13 @@ import { Cliente } from "../Cliente";
 export class ContaCorrente extends Conta {
   private _limite: number = 0;
 
-  constructor(numero: string) {
-    super(numero);
-  }
-
   public transferir(
     contaDestino: Conta,
     valor: number,
-    dia: number,
-    mês: number,
-    ano: number
+    data: Date = new Date()
   ) {
-    console.log(
-      `${this.cliente.nome} transferiu ${valor} para ${contaDestino.cliente.nome}`
-    );
-
-    this.sacar(valor, dia, mês, ano);
-    contaDestino.depositar(valor, ano, mês, dia);
+    this.sacar(valor, data);
+    contaDestino.depositar(valor, data);
   }
 
   calcularSaldo(): number {
