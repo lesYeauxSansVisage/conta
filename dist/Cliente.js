@@ -4,35 +4,39 @@ exports.Cliente = void 0;
 const Pessoa_1 = require("./abstract/Pessoa");
 const ContaCorrente_1 = require("./constuctors/ContaCorrente");
 const ContaPoupan_a_1 = require("./constuctors/ContaPoupan\u00E7a");
-const Endereco_1 = require("./constuctors/Endereco");
 class Cliente extends Pessoa_1.Pessoa {
-    constructor(cpf, name, telefone, tipoDeConta, cep, logradouro, numero, complemento, cidade, uf) {
+    constructor(cpf, name, telefone, conta, endereço) {
         super(cpf, name, telefone);
         this._enderecos = [];
         this._correntes = [];
         this._poupancas = [];
-        this.adiconarEndereco(cep, logradouro, numero, complemento, cidade, uf);
-        this.adicionarConta(tipoDeConta, this);
+        this.adicionarEndereco(endereço);
+        this.adicionarConta(conta);
     }
     autenticar() {
         return true;
     }
-    adiconarEndereco(cep, logradouro, numero, complemento, cidade, uf) {
-        const novoEndereco = new Endereco_1.Endereco(cep, logradouro, numero, complemento, cidade, uf, this);
-        this.enderecos.push(novoEndereco);
+    adicionarEndereco(endereco) {
+        endereco.cliente = this;
+        this.enderecos.push(endereco);
     }
-    adicionarConta(tipoDeConta, cliente) {
-        if (tipoDeConta === "corrente") {
-            const novaConta = new ContaCorrente_1.ContaCorrente(String(this._correntes.length + 1), cliente);
-            this._correntes.push(novaConta);
-            return;
+    adicionarConta(conta) {
+        if (conta instanceof ContaCorrente_1.ContaCorrente) {
+            conta.cliente = this;
+            conta.numero =
+                this.correntes.length > 0
+                    ? String(+this.correntes[this.correntes.length - 1].numero + 1)
+                    : "1";
+            this._correntes.push(conta);
         }
-        if (tipoDeConta === "poupança") {
-            const novaConta = new ContaPoupan_a_1.ContaPoupanca(String(this._correntes.length + 1), cliente);
-            this._poupancas.push(novaConta);
-            return;
+        if (conta instanceof ContaPoupan_a_1.ContaPoupanca) {
+            conta.cliente = this;
+            conta.numero =
+                this.poupancas.length > 0
+                    ? String(+this.correntes[this.correntes.length - 1].numero + 1)
+                    : "1";
+            this._poupancas.push(conta);
         }
-        throw new Error("O tipo de conta selecionada não está disponível");
     }
     listarEnderecos() {
         this.enderecos.forEach((endereco) => console.log(endereco));
