@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Funcionario = void 0;
 const Pessoa_1 = require("./abstract/Pessoa");
-const Cargo_1 = require("./constuctors/Cargo");
 class Funcionario extends Pessoa_1.Pessoa {
     constructor(cpf, name, telefone, salario, cargo) {
         super(cpf, name, telefone);
@@ -20,9 +19,8 @@ class Funcionario extends Pessoa_1.Pessoa {
         return true;
     }
     adicionarCargo(cargo) {
-        const novoCargo = new Cargo_1.Cargo(cargo);
-        novoCargo.adicionarFuncionario(this);
-        this._cargos.push(novoCargo);
+        cargo.adicionarFuncionario(this);
+        this._cargos.push(cargo);
     }
 }
 exports.Funcionario = Funcionario;
