@@ -1,3 +1,4 @@
+import { Conta } from "./abstract/Conta";
 import { Pessoa } from "./abstract/Pessoa";
 import { ContaCorrente } from "./constuctors/ContaCorrente";
 import { ContaPoupanca } from "./constuctors/ContaPoupança";
@@ -15,64 +16,44 @@ export class Cliente extends Pessoa implements IUsuario {
     cpf: string,
     name: string,
     telefone: string,
-    tipoDeConta: string,
-    cep: string,
-    logradouro: string,
-    numero: string,
-    complemento: string,
-    cidade: string,
-    uf: string
+    conta: ContaCorrente | ContaPoupanca,
+    endereço: Endereco
   ) {
     super(cpf, name, telefone);
-    this.adiconarEndereco(cep, logradouro, numero, complemento, cidade, uf);
-    this.adicionarConta(tipoDeConta, this);
+    this.adicionarEndereco(endereço);
+    this.adicionarConta(conta);
   }
 
   autenticar(): boolean {
     return true;
   }
 
-  public adiconarEndereco(
-    cep: string,
-    logradouro: string,
-    numero: string,
-    complemento: string,
-    cidade: string,
-    uf: string
-  ) {
-    const novoEndereco = new Endereco(
-      cep,
-      logradouro,
-      numero,
-      complemento,
-      cidade,
-      uf,
-      this
-    );
-
-    this.enderecos.push(novoEndereco);
+  public adicionarEndereco(endereco: Endereco) {
+    endereco.cliente = this;
+    this.enderecos.push(endereco);
   }
 
-  public adicionarConta(tipoDeConta: string, cliente: Cliente) {
-    if (tipoDeConta === "corrente") {
-      const novaConta = new ContaCorrente(
-        String(this._correntes.length + 1),
-        cliente
-      );
-      this._correntes.push(novaConta);
-      return;
+  public adicionarConta(conta: ContaCorrente | ContaPoupanca) {
+    if (conta instanceof ContaCorrente) {
+      conta.cliente = this;
+      // O numero da conta será igual ao número da conta anterior a esta ou, caso não haja conta, será igual a 0 para evitar duplicações
+      conta.numero =
+        this.correntes.length > 0
+          ? String(+this.correntes[this.correntes.length - 1].numero + 1)
+          : "1";
+
+      this._correntes.push(conta);
     }
 
-    if (tipoDeConta === "poupança") {
-      const novaConta = new ContaPoupanca(
-        String(this._correntes.length + 1),
-        cliente
-      );
-      this._poupancas.push(novaConta);
-      return;
-    }
+    if (conta instanceof ContaPoupanca) {
+      conta.cliente = this;
+      conta.numero =
+        this.poupancas.length > 0
+          ? String(+this.correntes[this.correntes.length - 1].numero + 1)
+          : "1";
 
-    throw new Error("O tipo de conta selecionada não está disponível");
+      this._poupancas.push(conta);
+    }
   }
 
   public listarEnderecos() {
