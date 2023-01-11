@@ -40,8 +40,7 @@ const cliente = new Cliente(
   endereco1
 );
 
-cliente.adicionarConta(new ContaCorrente());
-cliente.adicionarConta(new ContaCorrente());
-cliente.adicionarConta(new ContaCorrente());
+cliente.adicionarEndereco(endereco2);
+cliente.adicionarEndereco(endereco3);
 
-console.log(cliente);
+cliente.listarEnderecos();
