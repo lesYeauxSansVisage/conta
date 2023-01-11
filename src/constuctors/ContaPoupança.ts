@@ -14,10 +14,6 @@ export class ContaPoupanca extends Conta {
     this._rendimentos = value;
   }
 
-  constructor(numero: string) {
-    super(numero);
-  }
-
   public calcularSaldo(): number {
     const totalCreditos =
       this.creditos.length > 0
