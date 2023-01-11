@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContaPoupanca = void 0;
 const Conta_1 = require("../abstract/Conta");
 class ContaPoupanca extends Conta_1.Conta {
-    constructor(numero, cliente) {
-        super(numero, cliente);
+    constructor() {
+        super(...arguments);
         this._rentabilidadeMensal = 0;
         this._rendimentos = 0;
     }
@@ -61,8 +61,6 @@ class ContaPoupanca extends Conta_1.Conta {
                 .reduce((acc, curr) => curr.valor + acc, 0);
             const totalMensal = totalCreditosMensais - totalDebitosMensais + this.rendimentos;
             rendimentosMensais = Number((totalMensal * (this.rentabilidadeMensal / 100)).toFixed(2));
-            console.log(`Seu total mensal no mês de ${nomeDosMeses[mêsAtual]} foi de ${totalMensal}.`);
-            console.log(`Seu rendimento no mês de ${nomeDosMeses[mêsAtual]} foi de ${rendimentosMensais}R$`);
             this.rendimentos += rendimentosMensais;
         }
         return Number(this.rendimentos.toFixed(2));
