@@ -4,28 +4,18 @@ exports.Conta = void 0;
 const Cr_dito_1 = require("../constuctors/Cr\u00E9dito");
 const D_bito_1 = require("../constuctors/D\u00E9bito");
 class Conta {
-    constructor(numero, cliente) {
+    constructor() {
         this._creditos = [];
         this._debitos = [];
-        this._numero = numero;
-        this._cliente = cliente;
     }
-    get numero() {
-        return this._numero;
-    }
-    set numero(value) {
-        this._numero = value;
-    }
-    depositar(valor, ano, mês, dia) {
-        const data = new Date(ano, mês, dia);
+    depositar(valor, data = new Date()) {
         const novoCredito = new Cr_dito_1.Credito(valor, data);
         this._creditos.push(novoCredito);
     }
-    sacar(valor, ano, mês, dia) {
+    sacar(valor, data = new Date()) {
         if (this.calcularSaldo() - valor < 0) {
             throw new Error("Valor do saque não pode ser maior que a soma do limite com os créditos!");
         }
-        const data = new Date(ano, mês, dia);
         const novoDebito = new D_bito_1.Debito(valor, data);
         this._debitos.push(novoDebito);
     }
@@ -37,6 +27,18 @@ class Conta {
     }
     get creditos() {
         return this._creditos;
+    }
+    get cliente() {
+        return this._cliente;
+    }
+    set cliente(value) {
+        this._cliente = value;
+    }
+    get numero() {
+        return this._numero;
+    }
+    set numero(value) {
+        this._numero = value;
     }
 }
 exports.Conta = Conta;

@@ -12,35 +12,21 @@ export abstract class Conta {
 
   private _cliente: Cliente;
 
-  constructor(numero: string, cliente: Cliente) {
-    this._numero = numero;
-    this._cliente = cliente;
-  }
+  constructor() {}
 
-  public get numero(): string {
-    return this._numero;
-  }
-
-  public set numero(value: string) {
-    this._numero = value;
-  }
-
-  public depositar(valor: number, ano: number, mês: number, dia: number) {
-    const data = new Date(ano, mês, dia);
-
+  public depositar(valor: number, data: Date = new Date()) {
     const novoCredito = new Credito(valor, data);
 
     this._creditos.push(novoCredito);
   }
 
-  public sacar(valor: number, ano: number, mês: number, dia: number) {
+  public sacar(valor: number, data: Date = new Date()) {
     if (this.calcularSaldo() - valor < 0) {
       throw new Error(
         "Valor do saque não pode ser maior que a soma do limite com os créditos!"
       );
     }
 
-    const data = new Date(ano, mês, dia);
     const novoDebito = new Debito(valor, data);
     this._debitos.push(novoDebito);
   }
@@ -61,5 +47,17 @@ export abstract class Conta {
 
   public get cliente(): Cliente {
     return this._cliente;
+  }
+
+  public set cliente(value: Cliente) {
+    this._cliente = value;
+  }
+
+  public get numero(): string {
+    return this._numero;
+  }
+
+  public set numero(value: string) {
+    this._numero = value;
   }
 }
