@@ -33,7 +33,7 @@ export class Cliente extends Pessoa implements IUsuario {
 
   public adicionarConta(conta: Conta) {
     conta.cliente = this;
-    // O numero da conta será igual ao número da conta anterior a esta mais um ou, caso não haja conta, será igual a 0 para evitar duplicações
+    // O numero da conta será igual ao número da conta anterior a esta mais um ou, caso não haja conta, será igual a 1 para evitar duplicações
     conta.numero =
       this.contas.length > 0
         ? String(+this.contas[this.contas.length - 1].numero + 1)
