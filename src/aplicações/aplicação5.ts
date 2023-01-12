@@ -19,26 +19,28 @@ const cliente = new Cliente(
   endereco1
 );
 
-cliente.poupancas[0].rentabilidadeMensal = 1;
+(cliente.contas[0] as ContaPoupanca).rentabilidadeMensal = 1;
 
-cliente.poupancas[0].depositar(200, new Date(2022, 0, 1));
-cliente.poupancas[0].depositar(200, new Date(2022, 1, 1));
-cliente.poupancas[0].depositar(200, new Date(2022, 2, 1));
-cliente.poupancas[0].depositar(200, new Date(2022, 3, 1));
-cliente.poupancas[0].depositar(200, new Date(2022, 4, 1));
-cliente.poupancas[0].depositar(200, new Date(2022, 5, 1));
-cliente.poupancas[0].depositar(200, new Date(2022, 6, 1));
-cliente.poupancas[0].depositar(200, new Date(2022, 7, 1));
-cliente.poupancas[0].depositar(200, new Date(2022, 8, 1));
-cliente.poupancas[0].depositar(200, new Date(2022, 9, 1));
-cliente.poupancas[0].depositar(200, new Date(2022, 10, 1));
-cliente.poupancas[0].depositar(200, new Date(2022, 11, 31));
+cliente.contas[0].depositar(200, new Date(2022, 0, 1));
+cliente.contas[0].depositar(200, new Date(2022, 1, 1));
+cliente.contas[0].depositar(200, new Date(2022, 2, 1));
+cliente.contas[0].depositar(200, new Date(2022, 3, 1));
+cliente.contas[0].depositar(200, new Date(2022, 4, 1));
+cliente.contas[0].depositar(200, new Date(2022, 5, 1));
+cliente.contas[0].depositar(200, new Date(2022, 6, 1));
+cliente.contas[0].depositar(200, new Date(2022, 7, 1));
+cliente.contas[0].depositar(200, new Date(2022, 8, 1));
+cliente.contas[0].depositar(200, new Date(2022, 9, 1));
+cliente.contas[0].depositar(200, new Date(2022, 10, 1));
+cliente.contas[0].depositar(200, new Date(2022, 11, 31));
 
-cliente.poupancas[0].sacar(100, new Date(2022, 2, 5));
-cliente.poupancas[0].sacar(200, new Date(2022, 6, 8));
+cliente.contas[0].sacar(100, new Date(2022, 2, 5));
+cliente.contas[0].sacar(200, new Date(2022, 6, 8));
 
 console.log(
-  `Seu rendimento total foi de: ${cliente.poupancas[0].calcularRendimento()}`
+  `Seu rendimento total foi de: ${(
+    cliente.contas[0] as ContaPoupanca
+  ).calcularRendimento()}`
 );
 
-console.log("Seu saldo é: " + cliente.poupancas[0].calcularSaldo());
+console.log("Seu saldo é: " + cliente.contas[0].calcularSaldo());

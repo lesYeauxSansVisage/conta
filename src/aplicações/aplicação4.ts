@@ -37,24 +37,24 @@ const cliente2 = new Cliente(
   endereco2
 );
 
-cliente1.correntes[0].depositar(1000);
+cliente1.contas[0].depositar(1000);
 
-cliente2.poupancas[0].depositar(1000);
+cliente2.contas[0].depositar(1000);
 
 console.log(
-  `O saldo de ${cliente1.nome} é ${cliente1.correntes[0].calcularSaldo()}.`
+  `O saldo de ${cliente1.nome} é ${cliente1.contas[0].calcularSaldo()}.`
 );
 
 console.log(
-  `O saldo de ${cliente2.nome} é ${cliente2.poupancas[0].calcularSaldo()}.`
+  `O saldo de ${cliente2.nome} é ${cliente2.contas[0].calcularSaldo()}.`
 );
 
-cliente1.correntes[0].transferir(cliente2.poupancas[0], 500);
+(cliente1.contas[0] as ContaCorrente).transferir(cliente2.contas[0], 500);
 
 console.log(
-  `O saldo de ${cliente1.nome} é ${cliente1.correntes[0].calcularSaldo()}.`
+  `O saldo de ${cliente1.nome} é ${cliente1.contas[0].calcularSaldo()}.`
 );
 
 console.log(
-  `O saldo de ${cliente2.nome} é ${cliente2.poupancas[0].calcularSaldo()}.`
+  `O saldo de ${cliente2.nome} é ${cliente2.contas[0].calcularSaldo()}.`
 );
