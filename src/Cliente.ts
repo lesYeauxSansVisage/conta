@@ -8,15 +8,13 @@ import { IUsuario } from "./interfaces/IUsuario";
 export class Cliente extends Pessoa implements IUsuario {
   private _enderecos: Endereco[] = [];
 
-  private _correntes: ContaCorrente[] = [];
-
-  private _poupancas: ContaPoupanca[] = [];
+  private _contas: Conta[] = [];
 
   constructor(
     cpf: string,
     name: string,
     telefone: string,
-    conta: ContaCorrente | ContaPoupanca,
+    conta: Conta,
     endereço: Endereco
   ) {
     super(cpf, name, telefone);
@@ -33,27 +31,15 @@ export class Cliente extends Pessoa implements IUsuario {
     this.enderecos.push(endereco);
   }
 
-  public adicionarConta(conta: ContaCorrente | ContaPoupanca) {
-    if (conta instanceof ContaCorrente) {
-      conta.cliente = this;
-      // O numero da conta será igual ao número da conta anterior a esta ou, caso não haja conta, será igual a 0 para evitar duplicações
-      conta.numero =
-        this.correntes.length > 0
-          ? String(+this.correntes[this.correntes.length - 1].numero + 1)
-          : "1";
+  public adicionarConta(conta: Conta) {
+    conta.cliente = this;
+    // O numero da conta será igual ao número da conta anterior a esta mais um ou, caso não haja conta, será igual a 0 para evitar duplicações
+    conta.numero =
+      this.contas.length > 0
+        ? String(+this.contas[this.contas.length - 1].numero + 1)
+        : "1";
 
-      this._correntes.push(conta);
-    }
-
-    if (conta instanceof ContaPoupanca) {
-      conta.cliente = this;
-      conta.numero =
-        this.poupancas.length > 0
-          ? String(+this.correntes[this.correntes.length - 1].numero + 1)
-          : "1";
-
-      this._poupancas.push(conta);
-    }
+    this.contas.push(conta);
   }
 
   public listarEnderecos() {
@@ -64,11 +50,7 @@ export class Cliente extends Pessoa implements IUsuario {
     return this._enderecos;
   }
 
-  public get correntes(): ContaCorrente[] {
-    return this._correntes;
-  }
-
-  public get poupancas(): ContaPoupanca[] {
-    return this._poupancas;
+  public get contas(): Conta[] {
+    return this._contas;
   }
 }
